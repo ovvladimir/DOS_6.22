@@ -1,0 +1,32 @@
+COUNTRY=007,866,C:\MSDOS\COUNTRY.SYS
+FILES=30
+BUFFERS=20
+
+DOS=HIGH,UMB
+rem Драйвер дополнительной (extended memory) памяти
+DEVICE=\MSDOS\HIMEM.SYS /testmem:off
+                                      
+[MENU]
+MENUCOLOR=1,0
+MENUITEM=NC, Norton Commander
+MENUITEM=RAM, RAM-disk + TETRIS + NC
+MENUITEM=CD_IDE, CD-ROM IDE DRIVER + NC
+MENUITEM=CD_AHCI, CD-ROM AHCI DRIVER + NC
+MENUDEFAULT=NC, 10
+
+[NC]
+rem Запуск Norton Commander
+
+[RAM]
+rem Запуск драйвера RAM-disk
+DEVICE=\BOOT\RAMdisk\RDISK.COM /S20
+
+[CD_IDE]
+rem Драйвер CD-ROM IDE. В BIOS выставить IDE !!!
+DEVICE=\BOOT\UDVD2.SYS /D:DVD
+Install=\BOOT\SHSUCDX.COM /D:DVD
+
+[CD_AHCI]
+rem Драйвер CD-ROM AHCI
+DEVICE=\BOOT\AHCI.SYS /D:DVD
+Install=\BOOT\SHSUCDX.COM /D:DVD
